@@ -1,0 +1,39 @@
+spring:
+
+  datasource:
+    username: zhangsan
+    password: 157960
+    url: jdbc:mysql://192.168.137.101:3306/springboot?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+
+  jpa:
+    #指定数据库提供商
+    database: mysql
+    #打印SQL
+    show-sql: true
+    #是jpa层面对数据表生成策略的控制
+    generate-ddl: true
+    hibernate:
+      #是jpa实现hibernate层面上对数据表生成策略的控制
+      ddl-auto: update
+      #指定命名策略
+      naming_strategy: org.hibernate.cfg.ImprovedNamingStrategy
+    main:
+      allow-bean-definition-overriding: true
+
+  redis:
+    port: 6379
+    host: 192.168.137.101
+
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+mybatis:
+  config-location: classpath:/mybatis/mybatis-config.xml #指定主配置文件
+  mapper-locations: classpath:/mybatis/mapper/*.xml # 指定xml映射文件路径
+  type-aliases-package: com.atguigu.domain # 指定mybatis别名包
+logging:
+  level:
+    com.atguigu.dao: debug # 配置日志
